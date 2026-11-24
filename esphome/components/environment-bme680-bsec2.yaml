@@ -99,7 +99,7 @@ sensor:
   - platform: template
     name: "Altitude"
     lambda: |-
-      const float STANDARD_SEA_LEVEL_PRESSURE = 1013.25; //in hPa, see note
+      const float STANDARD_SEA_LEVEL_PRESSURE = 1026.00; //in hPa, see note 1013.25
       return ((id(bme680_temperature).state + 273.15) / 0.0065) *
         (powf((STANDARD_SEA_LEVEL_PRESSURE / id(bme680_pressure).state), 0.190234) - 1); // in meter
     update_interval: 30s
