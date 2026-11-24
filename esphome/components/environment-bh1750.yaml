@@ -7,3 +7,18 @@
 
 #------------------------#  sensoren #------------------------# 
 
+# ⬇ Sensor informatie sensoren voor in ha ⬇ #
+sensor:
+    # BH1750FVI Ambient Light Sensor  
+  - platform: bh1750
+    name: "BH1750 Illuminance"
+    device_class: "illuminance"
+    icon: "mdi:brightness-5"    
+    i2c_id: i2c_bus_a
+    address: 0x23  #0x23  0x5C
+    filters: 
+      - multiply: 5.0      
+    update_interval: 10s
+
+# ⬇ Text informatie sensoren voor in ha ⬇ #
+text_sensor:
