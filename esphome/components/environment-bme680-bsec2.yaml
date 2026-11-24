@@ -1,0 +1,135 @@
+
+
+
+
+substitutions:
+
+  bme680_operating_age: 28d
+  bme680_sample_rate: LP
+  bme680_temperature_offset: 2.1
+
+  
+# Hardware: 
+  # Wemos Lolin ESP32-C3 mini
+  # Espressif ESP32-C3FH4 160 MHz 1 Core
+  # ESP32-C3 WIFI & Bluetooth LE RISC-V Single-Core CPU
+  # BME680 i2c 0x77
+  # BH1750 i2c 0x23
+
+
+
+# BME680 Minimal configuration with common sensors
+bme68x_bsec2_i2c:
+  address: 0x77
+  model: bme680
+  operating_age: 28d
+  sample_rate: ${bme680_sample_rate}
+  supply_voltage: 1.8V
+  temperature_offset: ${bme680_temperature_offset} # 3.1
+  i2c_id: "i2c_bus_a"  
+
+# ⬇ Sensor informatie sensoren voor in ha ⬇ #
+sensor:
+   # # BME680 sensors
+  - platform: bme68x_bsec2
+    temperature:
+      id: "bme680_temperature"
+      name: "BME680 Temperature"
+      device_class: "temperature"
+      state_class: "measurement"
+      icon: "mdi:thermometer"
+    pressure:
+      id: "bme680_pressure"
+      name: "BME680 Pressure"
+      device_class: "pressure"
+      state_class: "measurement" 
+      icon: "mdi:gauge"
+         
+    humidity:
+      id: "bme680_humidity"
+      name: "BME680 Humidity"
+      device_class: "humidity"
+      state_class: "measurement"
+      icon: "mdi:water-percent"
+      filters:
+       # - offset: 2.5
+        
+    iaq:
+      name: "BME680 IAQ Mobile"
+      id: iaqm
+      #device_class: "humidity"
+      state_class: "measurement"
+
+    iaq_static: 
+      name: "BME680 IAQ Static"
+      id: iaqs
+      #device_class: "humidity"
+      state_class: "measurement"
+
+    co2_equivalent:
+      id: "bme680_eco2"
+      name: "BME680 CO2 Equivalent"
+      #device_class: "CO2"
+      state_class: "measurement"
+      icon: "mdi:molecule-co2"
+
+    breath_voc_equivalent:
+      id: "bme680_bvoc"
+      name: "BME680 Breath VOC Equivalent"
+      state_class: "measurement"
+      #device_class: "CO2"
+      # icon: "mdi:test-tube"
+      # icon: "mdi:radiator"
+    
+    gas_resistance:
+      id: "bme680_gas_resistance"
+      name: "BME680 Gas Resistance"
+      state_class: "measurement"  
+     # device_class: "gas"
+     # icon: "mdi:gas-cylinder"
+     # icon: "mdi:molecule"
+
+  - platform: absolute_humidity
+    name: Absolute Humidity
+    temperature: bme680_temperature
+    humidity: bme680_humidity
+    state_class: "measurement" 
+
+
+# ⬇ Text informatie sensoren voor in ha ⬇ #
+text_sensor:
+
+  - platform: bme68x_bsec2
+    iaq_accuracy:
+      name: "BME680 IAQ Accuracy"
+      id: "bme680_iaq_accurancy"
+
+  - platform: template
+    name: "BME680 IAQ s Classification"
+    id: "bme680_iaq_static_classification"
+    icon: mdi:message-alert-outline
+    lambda: |-    
+      if ( int(id(iaqs).state) <= 50) {
+        return {"Excellent"};
+      }
+      else if (int(id(iaqs).state) >= 51 && int(id(iaqs).state) <= 100) {
+        return {"Good"};
+      }
+      else if (int(id(iaqs).state) >= 101 && int(id(iaqs).state) <= 150) {
+        return {"Lightly polluted"};
+      }
+      else if (int(id(iaqs).state) >= 151 && int(id(iaqs).state) <= 200) {
+        return {"Moderately polluted"};
+      }
+      else if (int(id(iaqs).state) >= 201 && int(id(iaqs).state) <= 250) {
+        return {"Heavily polluted"};
+      }
+      else if (int(id(iaqs).state) >= 251 && int(id(iaqs).state) <= 350) {
+        return {"Severely polluted"};
+      }
+      else if (int(id(iaqs).state) >= 351) {
+        return {"Extremely polluted"};
+      }
+      else {
+        return {"error"};
+      } 
