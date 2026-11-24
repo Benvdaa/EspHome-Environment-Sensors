@@ -39,6 +39,6 @@ packages:
     ref: main
     files:
       - esphome/components/environment-sensors-esp32c3.yaml
-      #- esphome/components/solis-modbus-inv-copy.yaml
-      
+      - esphome/components/environment-bme680-bsec2.yaml
+      - esphome/components/environment-bh1750.yaml
     refresh: 0d  
