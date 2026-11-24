@@ -9,9 +9,9 @@
 
 # ⬇ Substitutions ⬇ #
 substitutions:
-  time_timezone: "Europe/Amsterdam"
-  name: c3-environment
-  friendly_name: C3 Environment
+#  time_timezone: "Europe/Amsterdam"
+#  name: c3-environment
+#  friendly_name: C3 Environment
   
 # ⬇ Esphome ⬇ #
 esphome:  
