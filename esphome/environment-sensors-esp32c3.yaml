@@ -31,4 +31,14 @@ dashboard_import:
   package_import_url: github://Benvdaa/EspHome-Environment-Sensors/edit/main/esphome/environment-sensors-esp32c3.yaml@main
   import_full_config: true
 
-  
+  # environment-sensors-esp32c3.yaml
+# ⬇ packages ⬇ #
+packages:
+  remote_package:
+    url: https://github.com/Benvdaa/vanderaa-projecten/
+    ref: main
+    files:
+      - esphome/components/environment-sensors-esp32c3.yaml
+      #- esphome/components/solis-modbus-inv-copy.yaml
+      
+    refresh: 0d  
