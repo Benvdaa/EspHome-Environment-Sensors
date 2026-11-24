@@ -34,14 +34,14 @@
 substitutions:
   time_timezone: "Europe/Amsterdam"
   # vdate: "v 0.0.4 2026-04-22"
-  project_version: "0.0.3" # From 22-04-2026 new version
+  project_version: "0.0.4" # From 22-04-2026 new version
   date: "24-11-2026"
   device_description: "${friendly_name} gemaakt door van der Aa versie: ${project_version} - date ${date}."
 
   name: c3-environment
   friendly_name: C3 Environment
 
-  vdate: "0.0.3 2025-8-12"
+  vdate: "0.0.4 2025-8-12"
   # version: "0.0.0"
   #   device_description: "C3 Environment sensors gemaakt door vanderaa-ict.com versie ${vdate}."  
   board: c3mini
