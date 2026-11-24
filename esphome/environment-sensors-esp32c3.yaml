@@ -35,7 +35,7 @@ dashboard_import:
 # ⬇ packages ⬇ #
 packages:
   remote_package:
-    url: https://github.com/Benvdaa/vanderaa-projecten/
+    url: https://github.com/Benvdaa/EspHome-Environment-Sensors/
     ref: main
     files:
       - esphome/components/environment-sensors-esp32c3.yaml
