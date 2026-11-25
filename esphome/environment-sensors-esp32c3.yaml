@@ -12,6 +12,9 @@ substitutions:
 #  time_timezone: "Europe/Amsterdam"
   name: c3-environment
   friendly_name: C3 Environment
+  bme680_operating_age: 28d
+  bme680_sample_rate: LP
+  bme680_temperature_offset: 2.1  
   
 # ⬇ Esphome ⬇ #
 esphome:  
