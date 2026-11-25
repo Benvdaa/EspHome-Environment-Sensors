@@ -42,6 +42,7 @@ api:
 # OTA is required for Over-the-Air updating
 ota:
   platform: esphome
+  encryption: # Uses key set by Home Assistant  
   # no password provided
   # password:
 
