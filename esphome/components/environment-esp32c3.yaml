@@ -115,7 +115,8 @@ captive_portal:
 improv_serial:
 
 # Provisioning via Bluetooth LE
-esp32_improv:
+improv_ble:
+# esp32_improv:
   authorizer: none
   
 # ⬇ Enable Web Server component ⬇ # 
