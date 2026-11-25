@@ -90,16 +90,16 @@ sensor:
      # icon: "mdi:molecule"
 
   - platform: absolute_humidity
-    name: Absolute Humidity
+    name: BME680 Absolute Humidity
     temperature: bme680_temperature
     humidity: bme680_humidity
     state_class: "measurement" 
 
 
   - platform: template
-    name: "Altitude"
+    name: "BME680 Altitude"
     lambda: |-
-      const float STANDARD_SEA_LEVEL_PRESSURE = 1026.00; //in hPa, see note 1013.25
+      const float STANDARD_SEA_LEVEL_PRESSURE = 1026.00; //in hPa, see note 1013.25 Schipholl 1026.0
       return ((id(bme680_temperature).state + 273.15) / 0.0065) *
         (powf((STANDARD_SEA_LEVEL_PRESSURE / id(bme680_pressure).state), 0.190234) - 1); // in meter
     update_interval: 30s
