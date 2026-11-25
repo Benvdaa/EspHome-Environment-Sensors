@@ -97,10 +97,10 @@ ota:
 # Enable Wifi
 
 wifi:
-  min_auth_mode: WPA2
+ # min_auth_mode: WPA2
    #  auth expired errors work around:
    # The amount of TX power for the WiFi interface from 8.5dB to 20.5dB. Default for ESP8266 is 20dB, 20.5dB might cause unexpected restarts.
-  output_power: 8.5
+ # output_power: 8.5
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
