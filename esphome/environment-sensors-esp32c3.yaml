@@ -37,7 +37,7 @@ logger:
 
 # API is a requirement of the dashboard import.
 api:
-  encryption: 
+  encryption: # Uses key set by Home Assistant 
 
 # OTA is required for Over-the-Air updating
 ota:
