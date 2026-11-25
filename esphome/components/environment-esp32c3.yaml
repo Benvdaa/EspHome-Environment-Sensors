@@ -93,6 +93,7 @@ api:
 ota:
   - platform: esphome  
    # password: # Uses key set by Home Assistant
+    encryption: # Uses key set by Home Assistant
 
 # Enable Wifi
 
