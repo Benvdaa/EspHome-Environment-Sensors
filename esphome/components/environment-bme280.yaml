@@ -1,1 +1,57 @@
 
+substitutions:
+  i2c_bus: bus_a
+  temp_offset: 0.0
+  hum_offset: 0.0
+  pres_offset: 0.0
+  
+sensor:
+  # BME280 Minimal configuration with common sensors
+  - platform: bme280_i2c
+    temperature:
+      name: "BME280 Temperature"
+      id: bme280_temperature
+      device_class: "temperature"
+      state_class: "measurement"
+      icon: 'mdi:thermometer'
+    pressure:
+      name: "BME280 Pressure"
+      id: bme280_pressure
+      device_class: "pressure"
+      state_class: "measurement"
+      icon: "mdi:gauge"
+    humidity:
+      name: "BME280 Relative Humidity"
+      id: bme280_humidity
+      device_class: "humidity"
+      state_class: "measurement"
+      icon: "mdi:water-percent"
+     # filters:
+      #  - offset: ${hum_offset}
+    address: 0x76
+    i2c_id: ${i2c_bus} # bus_a
+    update_interval: 15s
+
+  - platform: template
+    name: "BME280 Altitude"
+    lambda: |-
+      const float STANDARD_SEA_LEVEL_PRESSURE = 1026.00; //in hPa, see note 1013.25
+      return ((id(bme280_temperature).state + 273.15) / 0.0065) *
+        (powf((STANDARD_SEA_LEVEL_PRESSURE / id(bme280_pressure).state), 0.190234) - 1); // in meter
+    update_interval: 15s
+    icon: 'mdi:signal'
+    unit_of_measurement: 'm'
+    
+  - platform: absolute_humidity
+    name: "BME280 Absolute Humidity"
+    temperature: bme280_temperature
+    humidity: bme280_humidity
+    
+  - platform: template
+    name: "BME280 Dew Point"
+    lambda: |-
+      return (243.5*(log(id(bme280_humidity).state/100)+((17.67*id(bme280_temperature).state)/
+      (243.5+id(bme280_temperature).state)))/(17.67-log(id(bme280_humidity).state/100)-
+      ((17.67*id(bme280_temperature).state)/(243.5+id(bme280_temperature).state))));
+    unit_of_measurement: °C
+    icon: 'mdi:thermometer-alert'    
