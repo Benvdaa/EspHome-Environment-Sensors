@@ -3,7 +3,8 @@
 
 
 
-
+substitutions:
+  bh1750_multiply: 5.0
 
 #------------------------#  sensoren #------------------------# 
 
@@ -17,7 +18,7 @@ sensor:
     i2c_id: i2c_bus_a
     address: 0x23  #0x23  0x5C
     filters: 
-      - multiply: 5.0      
+      - multiply: bh1750_multiply      
     update_interval: 10s
 
 # ⬇ Text informatie sensoren voor in ha ⬇ #
