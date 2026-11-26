@@ -2,8 +2,10 @@
 substitutions:
   i2c_bus: bus_a
   temp_offset: 0.0
-  hum_offset: 0.0
-  pres_offset: 0.0
+  hum_offset: 0.0 
+  pres_offset: 0.0 
+  pres_sealevel: 1026.0  # Sealevel Schiphol
+  
   
 sensor:
   # BME280 Minimal configuration with common sensors
