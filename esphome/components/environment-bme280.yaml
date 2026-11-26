@@ -11,7 +11,7 @@
   
   
 substitutions:
-  i2c_bus: bus_a
+  i2c_bus: i2c_bus_a
   temp_offset: 0.0
   hum_offset: 0.0 
   pres_offset: 0.0 
