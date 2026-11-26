@@ -24,7 +24,7 @@ esphome:
   comment: '${device_description}'
 
   project:
-    name: "BenvdAa.Environment Sensor Esp32c3 Project"
+    name: "vanderaa.Environment Sensor Esp32c3 Project"
     version: "${project_version}"
   # min_version: 2025.10.0
 
