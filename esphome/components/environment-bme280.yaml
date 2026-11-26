@@ -1,4 +1,15 @@
 
+
+  
+# Hardware: 
+  # Wemos Lolin ESP32-C3 mini / D1 mini
+  # Espressif ESP32-C3FH4 160 MHz 1 Core
+  # ESP32-C3 WIFI & Bluetooth LE RISC-V Single-Core CPU
+  # BME280 i2c 0x76
+  # BME680 i2c 0x77
+  # BH1750 i2c 0x23
+  
+  
 substitutions:
   i2c_bus: bus_a
   temp_offset: 0.0
