@@ -68,7 +68,7 @@ esphome:
   
   comment: ${device_description}
   project: 
-    name: "vanderAa.Environment-Sensors C3 Project"
+    name: "vanderAa.Environment-Sensors S3 Project"
     version: ${project_version} 
 
 # Board
