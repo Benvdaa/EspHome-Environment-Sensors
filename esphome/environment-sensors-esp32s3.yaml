@@ -1,1 +1,84 @@
 
+
+# Delen en bewerken mag maar laat deze eerste regels staan.
+# Bron : https://www.vanderaa-ict.com
+# Bron File : https://github.com/Benvdaa/vanderaa-projecten/tree/main/esphome
+# © vanderaa-ict.com
+
+
+
+# ⬇ Substitutions ⬇ #
+substitutions:
+#  time_timezone: "Europe/Amsterdam"
+  name: s3-environment
+  friendly_name: S3 Environment
+  
+# ⬇ Esphome ⬇ #
+esphome:  
+  name: ${name}
+  # Automatically add the mac address to the name
+  # so you can use a single firmware for all devices
+  name_add_mac_suffix: true
+  # Friendly names are used where appropriate in Home Assistant
+  friendly_name: "${friendly_name}"  
+  comment: '${device_description}'
+
+  project:
+    name: "vanderaa.Environment Sensor Esp32S3 Project"
+    version: "${project_version}"
+  # min_version: 2025.10.0
+
+# ⬇ ESP32 C3 board⬇ #
+#esp32:
+ # board: esp32-c3-devkitm-1 
+  
+# To be able to get logs from the device via serial and api.
+logger:
+
+# API is a requirement of the dashboard import.
+api:
+  encryption: # Uses key set by Home Assistant 
+
+# OTA is required for Over-the-Air updating
+ota:
+  - platform: esphome
+  # encryption: # Uses key set by Home Assistant  
+  # no password provided
+  # password:
+
+  
+# ⬇ dashboard import ⬇ #
+dashboard_import:
+  package_import_url: github://Benvdaa/EspHome-Environment-Sensors/esphome/environment-sensors-esp32s3.yaml@main
+  import_full_config: true
+
+  # environment-sensors-esp32c3.yaml
+# ⬇ packages ⬇ #
+packages:
+  remote_package:
+    url: https://github.com/Benvdaa/EspHome-Environment-Sensors/
+    ref: main
+    files:
+      - esphome/components/environment-esp32s3.yaml
+      #- esphome/components/environment-bme680-bsec2.yaml
+      #- esphome/components/environment-bh1750.yaml
+    refresh: 0d  
+
+
+wifi:
+  # Set up a wifi access point
+  ap:
+    password: "12345678"
+
+# In combination with the `ap` this allows the user
+# to provision wifi credentials to the device.
+captive_portal:
+
+# Sets up Bluetooth LE (Only on ESP32) to allow the user
+# to provision wifi credentials to the device.
+improv_ble:
+  authorizer: none
+
+# Sets up the improv via serial client for Wi-Fi provisioning
+improv_serial:
+#  next_url: https://example.com/project-template/manual?ip={{ip_address}}&name={{device_name}}&version={{esphome_version}}
