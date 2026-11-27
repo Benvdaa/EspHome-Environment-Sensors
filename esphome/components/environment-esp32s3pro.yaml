@@ -19,7 +19,6 @@
 # with this program. If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
 #
 
-
 # Hardware:
 # Wemos Lolin ESP32-S3 pro
 # Espressif ESP32-S3 240 MHz 2 Cores
@@ -34,8 +33,6 @@
  # - Yelow:  hex xFFFFFF   | R 100%, G 100%, B 0%    | R 250, G 250, B 0
  # - Orange: hex xFFFFFF   | R 100%, G 48% , B 0%    | R 255 , G 115 , B 0
  # - Green:  hex xFFFFFF   | R 0%  , G 100%, B 20%   | R 0, G 250, B 50
-
-
 
  substitutions:
   time_timezone: "Europe/Amsterdam"
@@ -64,11 +61,11 @@
 
   sealevelpressure: 1026.00          # Sealevel pressure @ Schiphol NL
 
-
 esphome:
   name: ${name} 
   friendly_name: ${friendly_name} 
   name_add_mac_suffix: false
+  
   comment: ${device_description}
   project: 
     name: "vanderAa.Environment-Sensors C3 Project"
