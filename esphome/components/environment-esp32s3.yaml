@@ -101,7 +101,7 @@ wifi:
   min_auth_mode: WPA2
    #  auth expired errors work around:
    # The amount of TX power for the WiFi interface from 8.5dB to 20.5dB. Default for ESP8266 is 20dB, 20.5dB might cause unexpected restarts.
-  output_power: 8.5
+  # output_power: 8.5
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
@@ -135,7 +135,7 @@ time:
 
 # ⬇ Enable I2C Bus  #--------------------- ⬇ #
 i2c:
-  sda: GPIO08
+  sda: GPIO09
   scl: GPIO10
   id: i2c_bus_a
   scan: True
@@ -143,15 +143,6 @@ i2c:
   #Found i2c device at address 0x24
   #Found i2c device at address 0x3C
 
-# BME680 Minimal configuration with common sensors
-bme68x_bsec2_i2c:
-  address: 0x77
-  model: bme680
-  operating_age: 28d
-  sample_rate: ${bme680_sample_rate}
-  supply_voltage: 1.8V
-  temperature_offset: ${bme680_temperature_offset} # 3.1
-  i2c_id: "i2c_bus_a"  
 
 
 # ⬇ Enable SPI RGB Led  #--------------------- ⬇ #
