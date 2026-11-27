@@ -80,6 +80,7 @@ esp32:
   framework:
     #type: arduino
     type: esp-idf
+  flash_size: 16MB  
 
 
 # Enable logging
