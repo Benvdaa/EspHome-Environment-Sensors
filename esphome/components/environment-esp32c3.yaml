@@ -51,8 +51,8 @@ substitutions:
 
   bme680_operating_age: 28d
   bme680_sample_rate: LP
-  bme680_temperature_offset: 2.1
-  bme680_humidity_offset: 0.0
+  bme680_temperature_offset: 2.1   # Correction on bsec temperature correction
+  bme680_humidity_offset: 0.0      # Correction on Sensor Offset
   
 # Hardware: 
   # Wemos Lolin ESP32-C3 mini
