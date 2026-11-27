@@ -78,3 +78,54 @@ esp32:
     type: arduino
     #type: esp-idf
   flash_size: 16MB 
+
+
+# Enable 8 MB psRAM 
+psram:
+  mode: octal
+  speed: 80MHz  
+  
+# Enable logging
+logger:
+  #level: DEBUG
+
+# Enable Home Assistant API
+api:
+  id: ha_api
+  encryption:   # Uses key set by Home Assistant
+
+
+# Enable OTA
+ota:
+  platform: esphome  
+
+# Enable Wifi
+wifi:
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    #ssid: "Solis-Esphome-Esp32C3"
+    password: "12345678"    
+
+captive_portal:
+
+# Sets up the improv via serial client for Wi-Fi provisioning
+# Provisioning via USB/serial
+improv_serial:
+
+# Provisioning via Bluetooth LE
+improv_ble:
+# esp32_improv:
+  authorizer: none
+  
+# ⬇ Enable Web Server component ⬇ # 
+web_server:
+  port: 80
+  version: 3    
+
+http_request:
+  verify_ssl: false
+
+# ⬇ Enable Time component ⬇ #
+time:
+  - platform: homeassistant
+    id: time_homeassistant 
