@@ -60,7 +60,7 @@ packages:
     ref: main
     files:
       - esphome/components/environment-esp32s3.yaml
-      - esphome/components/environment-bme680-bsec2.yaml
+      # - esphome/components/environment-bme680-bsec2.yaml
       #- esphome/components/environment-bh1750.yaml
     refresh: 0d  
 
