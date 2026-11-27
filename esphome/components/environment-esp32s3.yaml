@@ -1,1 +1,80 @@
 
+
+# http://www.vanderaa-ict.com/
+# https://github.com/Benvdaa/-Esphome-Environment-Sensors
+#
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 3.0 as
+# published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program. If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
+#
+
+
+ substitutions:
+  time_timezone: "Europe/Amsterdam"
+  # vdate: "v 0.0.4 2026-04-22"
+  project_version: "0.0.1" # From 22-04-2026 new version
+  date: "26-11-2026"
+  device_description: "${friendly_name} gemaakt door van der Aa versie: ${project_version} - date ${date}."
+
+  name: s3-environment
+  friendly_name: S3 Environment
+
+  vdate: "0.0.7 2026-11-27"
+  # version: "0.0.0"
+  #   device_description: "C3 Environment sensors gemaakt door vanderaa-ict.com versie ${vdate}."  
+  board: s3pro
+  sensor1: bme680
+  sensor2: bh1750
+  sensor3: 
+
+  # Bsec parameters
+  bme680_operating_age: 28d
+  bme680_sample_rate: LP
+  bme680_temperature_offset: 2.1     # Correction on bsec temperature correction
+  # Sensor correction
+  bme680_humidity_offset: 0.0        # Correction on Sensor Offset
+
+  sealevelpressure: 1026.00          # Sealevel pressure @ Schiphol NL
+
+# Hardware:
+# Wemos Lolin ESP32-S3 pro
+# Espressif ESP32-S3 240 MHz 2 Cores
+# PS Ram: 8 MB (Octal SPI), Flash: 16 MB  (Quad SPI)
+# TX: IO43, RX: IO44, SCL: IO10 , SDA: IO09
+# RGB WS2812B: IO38
+
+# RGB Colors:
+ # - White:  hex xFFFFFF   | R 100%, G 100%, B 100%  | G 255, R 255, B 255 
+ # - Blue:   hex x3200FF   | R 20% , G 0%  , B 100%  | R 50, G 0, B 250
+ # - Red :   hex xFFFFFF   | R 100%, G 0%  , B 20%   | R 250, G 0, B 50
+ # - Yelow:  hex xFFFFFF   | R 100%, G 100%, B 0%    | R 250, G 250, B 0
+ # - Orange: hex xFFFFFF   | R 100%, G 48% , B 0%    | R 255 , G 115 , B 0
+ # - Green:  hex xFFFFFF   | R 0%  , G 100%, B 20%   | R 0, G 250, B 50
+
+
+esphome:
+  name: ${name} 
+  friendly_name: ${friendly_name} 
+  name_add_mac_suffix: false
+  
+  comment: ${device_description}
+  project: 
+    name: "vanderAa.Environment-Sensors C3 Project"
+    version: ${project_version} 
+
+# Board
+esp32:
+  board: esp32-s3-devkitc-1
+  framework:
+    #type: arduino
+    type: esp-idf
+  flash_size: 16MB  
