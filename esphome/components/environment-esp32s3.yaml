@@ -129,3 +129,79 @@ http_request:
 time:
   - platform: homeassistant
     id: time_homeassistant 
+
+
+
+#------------------------#  I2C Bus  #------------------------#
+i2c:
+  sda: GPIO09
+  scl: GPIO10
+  id: i2c_bus_a
+  # scan: false
+  frequency: 400khz
+  
+#------------------------#  I2C Bus  #------------------------# 
+
+# ⬇ Enable SPI RGB Led  #--------------------- ⬇ #
+light:
+  - platform: esp32_rmt_led_strip
+    channel_colors: GRB       # <--- Vervangt rgb_order (voorkomt waarschuwingen in de toekomst)
+    ## rgb_order: GRB
+    pin: GPIO7
+    num_leds: 1
+    #rmt_channel: 0
+    chipset: ws2812
+    name: "Status LED"
+    id: "activity_led"
+    default_transition_length: 0.1s 
+    restore_mode: ALWAYS_OFF
+    flash_transition_length: 100ms
+    entity_category: config
+    disabled_by_default: true # intentionally disabled, remove if you know what you are doing
+    
+  
+# ⬇ Button Configuration  ⬇ #
+button:
+  - platform: factory_reset
+    name: Restart with factory default settings
+    id: reset_all
+  - platform: restart
+    name: Reboot device
+
+# ⬇ Sensor Configuration  ⬇ #
+sensor:
+  - platform: wifi_signal
+    name: "WiFi Signal"
+    icon: mdi:wifi
+ # ⬇ Uptime informatie sensor ⬇ #
+  - platform: uptime
+    type: seconds         
+    name: Uptime Sensor 
+    
+
+# ⬇ Text Sensor Configuration  ⬇ #
+text_sensor:
+  # ⬇ Wifi informatie sensor ⬇ #
+  - platform: wifi_info
+    
+    ip_address: 
+      name: Wifi IP-adres
+      icon: mdi:ip-network
+    mac_address:
+      name: Wifi Mac-adres  # 
+      icon: mdi:folder-key-network-outline
+   # dns_address:
+   #  name: Wifi DNS Address
+   #  icon: mdi:ip-network
+    ssid:
+      name: Wifi Ssid  # 
+      icon: mdi:folder-key-network-outline
+    bssid:
+      name: Wifi Ssid Mac  # 
+      icon: mdi:folder-key-network-outline
+
+  
+  # ⬇ ESPHome Version information sensor ⬇ #
+  - platform: version
+    name: "ESPHome Version"     
+    hide_timestamp: true     
