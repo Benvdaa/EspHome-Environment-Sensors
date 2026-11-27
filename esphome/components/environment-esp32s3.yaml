@@ -82,6 +82,10 @@ esp32:
     type: esp-idf
   flash_size: 16MB  
 
+# Enable 8 MB psRAM 
+psram:
+  mode: octal
+  speed: 80MHz  
 
 # Enable logging
 logger:
