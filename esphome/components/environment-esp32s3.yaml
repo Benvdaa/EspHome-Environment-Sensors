@@ -28,13 +28,13 @@
   name: s3-environment
   friendly_name: S3 Environment
 
-  vdate: "0.0.7 2026-11-27"
+  vdate: "0.0.1 2026-11-27"
   # version: "0.0.0"
-  #   device_description: "C3 Environment sensors gemaakt door vanderaa-ict.com versie ${vdate}."  
+  #   device_description: "S3 Environment sensors gemaakt door vanderaa-ict.com versie ${vdate}."  
   sysboard: esp32-s3-devkitc-1
   sensor1: bme680
-  sensor2: bh1750
-  sensor3: 
+  #sensor2: bh1750
+  #sensor3: 
 
   # Bsec parameters
   bme680_operating_age: 28d
