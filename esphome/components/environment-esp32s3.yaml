@@ -38,13 +38,13 @@ substitutions:
   date: "26-11-2026"
   device_description: "${friendly_name} gemaakt door van der Aa versie: ${project_version} - date ${date}."
 
-  name: c3-environment
-  friendly_name: C3 Environment
+  name: s3-environment
+  friendly_name: S3 Environment
 
   vdate: "0.0.7 2026-11-26"
   # version: "0.0.0"
-  #   device_description: "C3 Environment sensors gemaakt door vanderaa-ict.com versie ${vdate}."  
-  board: c3mini
+  #   device_description: "S3 Environment sensors gemaakt door vanderaa-ict.com versie ${vdate}."  
+  board: s3 pro
   sensor1: bme680
   sensor2: bh1750
   sensor3: 
@@ -55,9 +55,8 @@ substitutions:
   bme680_humidity_offset: 0.0      # Correction on Sensor Offset
   
 # Hardware: 
-  # Wemos Lolin ESP32-C3 mini
-  # Espressif ESP32-C3FH4 160 MHz 1 Core
-  # ESP32-C3 WIFI & Bluetooth LE RISC-V Single-Core CPU
+  # Wemos Lolin ESP32-S3 Pro
+
   # BME680 i2c 0x77
   # BH1750 i2c 0x23
 
@@ -67,13 +66,13 @@ esphome:
   name_add_mac_suffix: false
   comment: ${device_description}
   project: 
-    name: "Benvdaa.Environment-Sensors C3 Project"
+    name: "vanderAa.Environment-Sensors S3 Project"
     version: ${project_version} 
 
 
 # Board
 esp32:
-  board: esp32-c3-devkitm-1
+  board: esp32-s3-devkitc-1
   framework:
     #type: arduino
     type: esp-idf
