@@ -7,6 +7,8 @@ substitutions:
   bme680_operating_age: 28d
   bme680_sample_rate: LP
   bme680_temperature_offset: 2.1
+  bme680_humidity_offset: 0.0
+  
 
   
 # Hardware: 
@@ -53,7 +55,7 @@ sensor:
       state_class: "measurement"
       icon: "mdi:water-percent"
       filters:
-       # - offset: 2.5
+        - offset: ${bme680_humidity_offset}
         
     iaq:
       name: "BME680 IAQ Mobile"
